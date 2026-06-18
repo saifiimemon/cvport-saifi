@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000; /* Jet black */
+  color: #ffffff; /* White text */
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.giant-text {
+  font-size: 18vw; 
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.85; 
+}
+
+.word-left, .word-right {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* About Section */
+.about-section {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-title {
+  font-size: 8vw;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Container to perfectly align Title and Card */
+.about-container {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+/* Card Shape */
+.about-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0px; 
+  height: 2px;
+  border: 2px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  opacity: 0; /* Hidden initially until 'ABOUT' moves */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  /* Do not use overflow: hidden so that shattered canvas shards can scatter outside the card boundaries! */
+}
+
+/* Card Typography */
+.about-paragraph {
+  width: 100%;
+  max-width: 90%;
+  text-align: center;
+  line-height: 1.8;
+  color: #ffffff; /* White text */
+  margin: 0;
+  padding: 0;
+}
+
+/* Meet Section */
+.meet-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #000000;
+}
+
+.meet-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
