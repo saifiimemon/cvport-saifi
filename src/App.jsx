@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
 import GlslHills from './components/GlslHills';
-import ShatterText from './components/ShatterText';
 import './index.css';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const ABOUT_TEXT = "I’m Saif Ali Memon—a software developer who builds for the modern web. As a frontend dev and AI prompt engineer, I don't just write code; I create experiences. I spend my time building cinematic 3D web apps with React and Three.js, and figuring out how to make custom AI agents work smarter. I love living right at the intersection of great design and cutting-edge tech.";
 
@@ -19,25 +19,7 @@ function App() {
   const aboutSectionRef = useRef(null);
   const aboutTitleRef = useRef(null);
   const aboutCardRef = useRef(null);
-  const shatterProgressObjects = useRef([]);
-  const [canvasFontSize, setCanvasFontSize] = useState(28);
-
-  const handleShatterInit = (progressObjs) => {
-    shatterProgressObjects.current = progressObjs;
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setCanvasFontSize(18);
-      } else {
-        setCanvasFontSize(28);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const textRef = useRef(null);
 
 
   const hillsSectionRef = useRef(null);
@@ -117,12 +99,11 @@ function App() {
              duration: 1.5
            });
 
-    // Phase D: Reveal text letter by letter with shatter animation
-    aboutTl.to(shatterProgressObjects.current, {
-      progress: 1,
-      stagger: 0.015,
-      ease: 'power1.out',
-      duration: 3
+    // Phase D: Reveal text letter by letter with typewriter animation
+    aboutTl.to(textRef.current, {
+      text: ABOUT_TEXT,
+      duration: 3,
+      ease: "none"
     });
 
     // 4. PARALLAX EFFECT TO THIRD SECTION
@@ -205,15 +186,7 @@ function App() {
           <h2 ref={aboutTitleRef} className="about-title">ABOUT</h2>
           
           <div ref={aboutCardRef} className="about-card">
-            <p className="about-paragraph">
-              <ShatterText
-                text={ABOUT_TEXT}
-                onInit={handleShatterInit}
-                fontSize={canvasFontSize}
-                fontStyle={`800 ${canvasFontSize}px Montserrat, sans-serif`}
-                textColor="#ffffff"
-              />
-            </p>
+            <p className="about-paragraph" ref={textRef}></p>
           </div>
         </div>
       </div>
