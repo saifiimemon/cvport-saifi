@@ -194,9 +194,14 @@ void main(void) {
 
     // Track mouse position
     const targetMouse = new THREE.Vector2(1000, 1000);
+    let isFirstMouseMove = true;
     const onMouseMove = (e) => {
       targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      if (isFirstMouseMove) {
+        plane.uniforms.uMouse.value.copy(targetMouse);
+        isFirstMouseMove = false;
+      }
     };
     window.addEventListener('mousemove', onMouseMove);
 

@@ -38,9 +38,32 @@ body {
   line-height: 0.85; 
 }
 
+.giant-text-smaller {
+  font-size: 14vw; 
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.85; 
+}
+
 .word-left, .word-right {
   display: inline-block;
   opacity: 0;
+}
+
+.github-link {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  color: #ffffff;
+  z-index: 100;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.github-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 /* About Section */
